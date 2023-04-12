@@ -1,0 +1,30 @@
+name: Test BDR Deployment
+
+on:
+  workflow_dispatch:
+  workflow_call:
+
+runs:
+  using: "composite"
+  steps:
+    - name: Export Credentials to download TPAexec and BDR
+      run: | 
+        export TOKEN=${{ env.EDB_SUBSCRIPTION_TOKEN }}
+        export TPA_2Q_SUBSCRIPTION_TOKEN=${{ env.TPA_2Q_SUBSCRIPTION_TOKEN }}
+        export EDB_REPO_CREDENTIALS_FILE=/root/.edbrepocred
+        echo ${{ env.EDB_REPO_CREDENTIALS }} > /root/.edbrepocred
+        chmod 600 /root/.edbrepocred
+      shell: bash
+    
+    - name: Install TPAexec
+      run: |
+        apt-get -y install curl
+        curl https://techsupport.enterprisedb.com/api/repository/${{ env.TPA_2Q_SUBSCRIPTION_TOKEN }}/products/tpa/release/deb | bash
+        apt-get -y install tpaexec
+      shell: bash
+      
+    - name: Set up TPAexec 
+      run: |
+        /opt/EDB/TPA/bin/tpaexec setup
+        /opt/EDB/TPA/bin/tpaexec selftest
+      shell: bash
