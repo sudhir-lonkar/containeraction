@@ -50,3 +50,18 @@ runs:
       run: |
         sudo -E /opt/EDB/TPA/bin/tpaexec deploy bronze
       shell: bash
+    
+    - name: Verify the BDR cluster checks
+      run: |
+        docker exec -it --user postgres kaboom psql -d bdrdb -c "SELECT * FROM bdr.monitor_group_raft();"
+        docker exec -it --user postgres kaftan psql -d bdrdb -c "SELECT * FROM bdr.monitor_group_raft();"
+        docker exec -it --user postgres kaolin psql -d bdrdb -c "SELECT * FROM bdr.monitor_group_raft();"
+
+        docker exec -it --user postgres kaboom psql -d bdrdb -c "SELECT * FROM bdr.monitor_group_versions();"
+        docker exec -it --user postgres kaftan psql -d bdrdb -c "SELECT * FROM bdr.monitor_group_versions();"
+        docker exec -it --user postgres kaolin psql -d bdrdb -c "SELECT * FROM bdr.monitor_group_versions();"
+
+        docker exec -it --user postgres kaboom psql -d bdrdb -c "SELECT * FROM bdr.monitor_local_replslots();"
+        docker exec -it --user postgres kaftan psql -d bdrdb -c "SELECT * FROM bdr.monitor_local_replslots();"
+        docker exec -it --user postgres kaolin psql -d bdrdb -c "SELECT * FROM bdr.monitor_local_replslots();"
+      shell: bash
