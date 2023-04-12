@@ -11,21 +11,23 @@ on:
   workflow_dispatch:
   workflow_call:
     secrets:
-      CLOUDSMITH_API_KEY:
-        required: true
       EDB_SUBSCRIPTION_TOKEN:
         required: true
       TPA_2Q_SUBSCRIPTION_TOKEN:
         required: true
       EDB_REPO_CREDENTIALS:
         required: true
-
+env:
+  EDB_SUBSCRIPTION_TOKEN: ${{ secrets.EDB_SUBSCRIPTION_TOKEN }}
+  TPA_2Q_SUBSCRIPTION_TOKEN: ${{ secrets.TPA_2Q_SUBSCRIPTION_TOKEN }}
+  EDB_REPO_CREDENTIALS: ${{ secrets.EDB_REPO_CREDENTIALS }}
+  
 jobs:
   bdr-test:
-  runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     
-  steps:
-  - name: Checkout code
-    uses: actions/checkout@v2
-  - name: Test
-    uses: ./containeraction/.github/actions/bdr_test
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Test
+      uses: ./containeraction/.github/actions/bdr_test
