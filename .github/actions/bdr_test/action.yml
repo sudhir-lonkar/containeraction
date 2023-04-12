@@ -40,3 +40,8 @@ runs:
         --no-git \
         --hostnames-unsorted
       shell: bash
+    
+    - name: Provision BDR cluster
+      run: |
+        sudo /opt/EDB/TPA/bin/tpaexec provision bronze
+      shell: bash
