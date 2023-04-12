@@ -18,9 +18,9 @@ runs:
     
     - name: Install TPAexec
       run: |
-        apt-get -y install curl
+        sudo apt-get -y install curl
         curl https://techsupport.enterprisedb.com/api/repository/${{ env.TPA_2Q_SUBSCRIPTION_TOKEN }}/products/tpa/release/deb | bash
-        apt-get -y install tpaexec
+        sudo apt-get -y install tpaexec
       shell: bash
       
     - name: Set up TPAexec 
