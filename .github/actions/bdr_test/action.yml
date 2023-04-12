@@ -39,3 +39,4 @@ runs:
         --postgres-version 14 \
         --no-git \
         --hostnames-unsorted
+      shell: bash
