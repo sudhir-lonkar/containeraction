@@ -45,3 +45,8 @@ runs:
       run: |
         sudo /opt/EDB/TPA/bin/tpaexec provision bronze
       shell: bash
+      
+    - name: Deploy BDR cluster
+      run: |
+        sudo /opt/EDB/TPA/bin/tpaexec deploy bronze
+      shell: bash
