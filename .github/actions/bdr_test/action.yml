@@ -27,3 +27,15 @@ runs:
         sudo /opt/EDB/TPA/bin/tpaexec setup
         sudo /opt/EDB/TPA/bin/tpaexec selftest
       shell: bash
+      
+    - name: Configure BDR cluster
+      run: |
+        sudo /opt/EDB/TPA/bin/tpaexec configure bronze \
+        --architecture BDR-Always-ON \
+        --layout bronze \
+        --platform docker \
+        --harp-consensus-protocol bdr \
+        --postgresql \
+        --postgres-version 14 \
+        --no-git \
+        --hostnames-unsorted
