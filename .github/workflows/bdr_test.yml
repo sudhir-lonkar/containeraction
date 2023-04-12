@@ -30,4 +30,4 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
     - name: Test
-      uses: ./sentinel-agent/.github/actions/bdr_test
+      uses: ./containeraction/.github/actions/bdr_test
