@@ -18,12 +18,12 @@ runs:
     
     - name: Install TPAexec
       run: |
-        curl https://techsupport.enterprisedb.com/api/repository/${{ env.TPA_2Q_SUBSCRIPTION_TOKEN }}/products/tpa/release/deb | sudo -u root bash
+        curl https://techsupport.enterprisedb.com/api/repository/${{ env.TPA_2Q_SUBSCRIPTION_TOKEN }}/products/tpa/release/deb | sudo bash
         sudo apt-get -y install tpaexec
       shell: bash
       
     - name: Set up TPAexec 
       run: |
-        /opt/EDB/TPA/bin/tpaexec setup
-        /opt/EDB/TPA/bin/tpaexec selftest
+        sudo /opt/EDB/TPA/bin/tpaexec setup
+        sudo /opt/EDB/TPA/bin/tpaexec selftest
       shell: bash
