@@ -10,9 +10,18 @@ on:
   # Allow manual triggers of this workflow
   workflow_dispatch:
   workflow_call:
+    secrets:
+      CLOUDSMITH_API_KEY:
+        required: true
+      EDB_SUBSCRIPTION_TOKEN:
+        required: true
+      TPA_2Q_SUBSCRIPTION_TOKEN:
+        required: true
+      EDB_REPO_CREDENTIALS:
+        required: true
 
 jobs:
-    build-linux:
+    bdr-test:
     runs-on: ubuntu-20.04
     strategy:
       fail-fast: false
