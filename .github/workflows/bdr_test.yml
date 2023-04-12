@@ -23,8 +23,6 @@ on:
 jobs:
     bdr-test:
     runs-on: ubuntu-20.04
-    strategy:
-      fail-fast: false
     
     steps:
     - name: Checkout code
