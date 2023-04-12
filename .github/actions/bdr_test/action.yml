@@ -11,8 +11,8 @@ runs:
       run: | 
         export TOKEN=${{ env.EDB_SUBSCRIPTION_TOKEN }}
         export TPA_2Q_SUBSCRIPTION_TOKEN=${{ env.TPA_2Q_SUBSCRIPTION_TOKEN }}
-        export EDB_REPO_CREDENTIALS_FILE=/root/.edbrepocred
-        echo ${{ env.EDB_REPO_CREDENTIALS }} > /root/.edbrepocred
+        export EDB_REPO_CREDENTIALS_FILE=~/.edbrepocred
+        echo ${{ env.EDB_REPO_CREDENTIALS }} > ~/.edbrepocred
         chmod 600 /root/.edbrepocred
       shell: bash
     
