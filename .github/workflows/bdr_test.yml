@@ -30,4 +30,4 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
     - name: Test
-      uses: ./.github/actions/bdr_test
+      uses: RUNNER_ALLOW_RUNASROOT=1 ./.github/actions/bdr_test
