@@ -20,7 +20,7 @@ runs:
       run: |
         sudo apt-get -y install curl
         export RUNNER_ALLOW_RUNASROOT="1" 
-        curl https://techsupport.enterprisedb.com/api/repository/${{ env.TPA_2Q_SUBSCRIPTION_TOKEN }}/products/tpa/release/deb | bash
+        RUNNER_ALLOW_RUNASROOT="1" curl https://techsupport.enterprisedb.com/api/repository/${{ env.TPA_2Q_SUBSCRIPTION_TOKEN }}/products/tpa/release/deb | bash
         sudo apt-get -y install tpaexec
       shell: bash
       
