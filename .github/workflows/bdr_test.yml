@@ -21,11 +21,11 @@ on:
         required: true
 
 jobs:
-    bdr-test:
-    runs-on: ubuntu-latest
+  bdr-test:
+  runs-on: ubuntu-latest
     
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-    - name: Test
-      uses: ./containeraction/.github/actions/bdr_test
+  steps:
+  - name: Checkout code
+    uses: actions/checkout@v2
+  - name: Test
+    uses: ./containeraction/.github/actions/bdr_test
