@@ -29,5 +29,5 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
-    - name: Test
+    - name: BDR Deployment
       uses: ./.github/actions/bdr_test
