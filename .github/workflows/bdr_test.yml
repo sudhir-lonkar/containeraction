@@ -15,12 +15,9 @@ on:
         required: true
       TPA_2Q_SUBSCRIPTION_TOKEN:
         required: true
-      EDB_REPO_CREDENTIALS:
-        required: true
 env:
   EDB_SUBSCRIPTION_TOKEN: ${{ secrets.EDB_SUBSCRIPTION_TOKEN }}
   TPA_2Q_SUBSCRIPTION_TOKEN: ${{ secrets.TPA_2Q_SUBSCRIPTION_TOKEN }}
-  EDB_REPO_CREDENTIALS: ${{ secrets.EDB_REPO_CREDENTIALS }}
   
 jobs:
   bdr-test:
