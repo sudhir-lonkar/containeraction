@@ -9,7 +9,7 @@ runs:
   steps:
     - name: Export Credentials to download TPAexec and BDR
       run: | 
-        export TOKEN=${{ env.EDB_SUBSCRIPTION_TOKEN }}
+        export EDB_SUBSCRIPTION_TOKEN=${{ env.EDB_SUBSCRIPTION_TOKEN }}
         export TPA_2Q_SUBSCRIPTION_TOKEN=${{ env.TPA_2Q_SUBSCRIPTION_TOKEN }}
         export EDB_REPO_CREDENTIALS_FILE=~/.edbrepocred
         echo ${{ env.EDB_REPO_CREDENTIALS }} > ~/.edbrepocred
@@ -30,11 +30,9 @@ runs:
       
     - name: Configure BDR cluster
       run: |
-        sudo /opt/EDB/TPA/bin/tpaexec configure bronze \
-        --architecture BDR-Always-ON \
-        --layout bronze \
+        sudo /opt/EDB/TPA/bin/tpaexec configure test \
+        --architecture PGD-Always-ON \
         --platform docker \
-        --harp-consensus-protocol bdr \
         --postgresql \
         --postgres-version 14 \
         --no-git \
@@ -43,12 +41,12 @@ runs:
     
     - name: Provision BDR cluster
       run: |
-        sudo /opt/EDB/TPA/bin/tpaexec provision bronze
+        sudo /opt/EDB/TPA/bin/tpaexec provision test
       shell: bash
       
     - name: Deploy BDR cluster
       run: |
-        sudo -E /opt/EDB/TPA/bin/tpaexec deploy bronze
+        sudo -E /opt/EDB/TPA/bin/tpaexec deploy test
       shell: bash
     
     - name: Verify the BDR cluster checks
