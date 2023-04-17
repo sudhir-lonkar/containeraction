@@ -37,7 +37,7 @@ runs:
         --bdr-version 3 \
         --harp-consensus-protocol bdr \
         --postgresql \
-        --postgres-version 14 \
+        --postgres-version 11 \
         --no-git \
         --hostnames-unsorted
       shell: bash
