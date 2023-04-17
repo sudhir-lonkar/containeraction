@@ -34,7 +34,7 @@ runs:
         --architecture BDR-Always-ON \
         --layout bronze \
         --platform docker \
-        --bdr-version 4 \
+        --bdr-version 3 \
         --harp-consensus-protocol bdr \
         --postgresql \
         --postgres-version 14 \
